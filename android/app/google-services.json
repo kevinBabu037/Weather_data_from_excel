@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "37853033535",
+    "project_id": "newtok-43843",
+    "storage_bucket": "newtok-43843.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37853033535:android:84279cd4dd5542ddf5b48a",
+        "android_client_info": {
+          "package_name": "com.example.newtok"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7VoYqmAo89-nJc0lLWdcd_m4qb-MR3mc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
