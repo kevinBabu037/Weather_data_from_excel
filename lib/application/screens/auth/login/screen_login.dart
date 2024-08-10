@@ -64,7 +64,7 @@ class ScreenLogIn extends StatelessWidget {
                   validator: (value) {
                     return Validatior.validatePassword(value);
                   },
-                ),
+                ), 
                 kHeight60,
                 BlocConsumer<LoginBloc, LoginState>(
                   listener: (context, state) {
@@ -73,13 +73,15 @@ class ScreenLogIn extends StatelessWidget {
                     } else if (state is LoginSucessState) {
                       kHideLoadingSnackbar(context);
                       kNavigationPushReplacement(context, const ScreenNavBar());
-                    } else if (state is LoginErrorState ) {
-                      kSnakBar(context, "Email or Password don't match", kClrRed);
                     }
-                    if (state is LoginByAdminState) {
+                     if (state is LoginByAdminState) {
                       kHideLoadingSnackbar(context);
                       kNavigationPushReplacement(context, ScreenAdmin());
                     }
+                     else if (state is LoginErrorState ) {
+                      kSnakBar(context, "Email or Password don't match", kClrRed);
+                    }
+                    
                   },
                   builder: (context, state) {
                     return LoginSignUpButtonWidget(

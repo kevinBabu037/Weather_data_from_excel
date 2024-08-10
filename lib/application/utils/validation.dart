@@ -42,22 +42,22 @@ class Validatior {
     }
 
     return null;
-  }
+  } 
 
-  static String? validateNameAndUserName(String? value){
-    if (value!.trim().isEmpty&& value.length<3) {
-      return "Enter a valid Name";
-    }
-    return null;
-  }
-   
-   
- static String? validateMin4Char(String? value){
-  if (value!.trim().isEmpty&&value.length<3) {
-     return 'required';
+  static String? validateNameAndUserName(String? value) {
+  if (value == null || value.trim().isEmpty || value.length < 3) {
+    return "Enter a valid Name (at least 3 characters)"; 
   }
   return null;
 }
+
+static String? validateMin4Char(String? value) {
+  if (value == null || value.trim().isEmpty || value.length < 3) {
+    return 'Required (at least 3 characters)';
+  }
+  return null;
+}
+
 
   
 }

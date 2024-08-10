@@ -5,9 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newtok/application/screens/auth/login/bloc/bloc/login_bloc.dart';
 import 'package:newtok/application/screens/auth/signup/bloc/bloc/signup_bloc.dart';
 import 'package:newtok/application/screens/user/excel%20upload/bloc/bloc/weather_bloc.dart';
+import 'package:newtok/application/screens/user/excel%20upload/bloc/excelbloc/bloc/excel_bloc.dart';
 import 'package:newtok/application/screens/user/home/bloc/location_bloc.dart';
 import 'package:newtok/application/screens/user/home/cubit/theme.dart';
 import 'package:newtok/application/screens/auth/login/screen_login.dart';
+import 'package:newtok/application/screens/user/profile/bloc/bloc/profile_bloc.dart';
 import 'package:newtok/application/screens/user/screen_nav/cubit/nav_bar.dart';
 import 'package:newtok/application/screens/user/screen_nav/screen_nav.dart';
 import 'package:newtok/data/shared_pref/shared_pref.dart';
@@ -35,6 +37,8 @@ void main() async{
         BlocProvider(create: (context) => NavIndex(),),
         BlocProvider(create: (context) => LocationBloc(),),
         BlocProvider(create: (context) => WeatherBloc(),),
+        BlocProvider(create: (context) => ExcelBloc(),),
+        BlocProvider(create: (context) => ProfileBloc(),),
       ],
       child:  BlocBuilder<ThemeCubit, ThemeData>(
       builder: (context, theme) {

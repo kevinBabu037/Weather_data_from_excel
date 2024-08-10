@@ -50,7 +50,7 @@ class _ScreenNavBarState extends State<ScreenNavBar> {
                   icon: CupertinoIcons.home,
                 ),
                 GButton(
-                  icon: CupertinoIcons.list_bullet_indent,
+                  icon: Icons.upload_outlined,
                 ),
                 GButton(
                   icon: CupertinoIcons.person,

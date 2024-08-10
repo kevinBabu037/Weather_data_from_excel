@@ -31,21 +31,21 @@ class WeatherResponse {
 
   factory WeatherResponse.fromJson(Map<String, dynamic> json) {
     return WeatherResponse(
-      coordinates: Coordinates.fromJson(json['coord']),
-      weather: (json['weather'] as List<dynamic>)
-          .map((e) => Weather.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      base: json['base'],
-      main: Main.fromJson(json['main']),
-      visibility: json['visibility'],
-      wind: Wind.fromJson(json['wind']),
-      clouds: Clouds.fromJson(json['clouds']),
-      dt: json['dt'],
-      sys: System.fromJson(json['sys']),
-      timezone: json['timezone'],
-      id: json['id'],
-      name: json['name'],
-      cod: json['cod'],
+      coordinates: Coordinates.fromJson(json['coord'] ?? {}),
+      weather: (json['weather'] as List<dynamic>?)
+              ?.map((e) => Weather.fromJson(e as Map<String, dynamic>))
+              .toList() ?? [],
+      base: json['base'] ?? '',
+      main: Main.fromJson(json['main'] ?? {}),
+      visibility: json['visibility'] ?? 0,
+      wind: Wind.fromJson(json['wind'] ?? {}),
+      clouds: Clouds.fromJson(json['clouds'] ?? {}),
+      dt: json['dt'] ?? 0,
+      sys: System.fromJson(json['sys'] ?? {}),
+      timezone: json['timezone'] ?? 0,
+      id: json['id'] ?? 0,
+      name: json['name'] ?? '',
+      cod: json['cod'] ?? 0,
     );
   }
 
@@ -79,8 +79,8 @@ class Coordinates {
 
   factory Coordinates.fromJson(Map<String, dynamic> json) {
     return Coordinates(
-      lon: (json['lon'] as num).toDouble(),
-      lat: (json['lat'] as num).toDouble(),
+      lon: (json['lon'] as num?)?.toDouble() ?? 0.0,
+      lat: (json['lat'] as num?)?.toDouble() ?? 0.0,
     );
   }
 
@@ -91,7 +91,6 @@ class Coordinates {
     };
   }
 }
-
 
 class Weather {
   final int id;
@@ -108,10 +107,10 @@ class Weather {
 
   factory Weather.fromJson(Map<String, dynamic> json) {
     return Weather(
-      id: json['id'],
-      main: json['main'],
-      description: json['description'],
-      icon: json['icon'],
+      id: json['id'] ?? 0,
+      main: json['main'] ?? '',
+      description: json['description'] ?? '',
+      icon: json['icon'] ?? '',
     );
   }
 
@@ -148,14 +147,14 @@ class Main {
 
   factory Main.fromJson(Map<String, dynamic> json) {
     return Main(
-      temp: json['temp'],
-      feelsLike: json['feels_like'],
-      tempMin: json['temp_min'],
-      tempMax: json['temp_max'],
-      pressure: json['pressure'],
-      humidity: json['humidity'],
-      seaLevel: json['sea_level'],
-      grndLevel: json['grnd_level'],
+      temp: (json['temp'] as num?)?.toDouble() ?? 0.0,
+      feelsLike: (json['feels_like'] as num?)?.toDouble() ?? 0.0,
+      tempMin: (json['temp_min'] as num?)?.toDouble() ?? 0.0,
+      tempMax: (json['temp_max'] as num?)?.toDouble() ?? 0.0,
+      pressure: json['pressure'] ?? 0,
+      humidity: json['humidity'] ?? 0,
+      seaLevel: json['sea_level'] ?? 0,
+      grndLevel: json['grnd_level'] ?? 0,
     );
   }
 
@@ -186,9 +185,9 @@ class Wind {
 
   factory Wind.fromJson(Map<String, dynamic> json) {
     return Wind(
-      speed: json['speed']?.toDouble() ?? 0.0, 
+      speed: (json['speed'] as num?)?.toDouble() ?? 0.0,
       deg: json['deg'] ?? 0,
-      gust: (json['gust'] != null ? (json['gust'] as num).toDouble() : 0.0), 
+      gust: (json['gust'] as num?)?.toDouble() ?? 0.0,
     );
   }
 
@@ -201,7 +200,6 @@ class Wind {
   }
 }
 
-
 class Clouds {
   final int all;
 
@@ -209,7 +207,7 @@ class Clouds {
 
   factory Clouds.fromJson(Map<String, dynamic> json) {
     return Clouds(
-      all: json['all'],
+      all: json['all'] ?? 0,
     );
   }
 
@@ -233,15 +231,15 @@ class System {
     required this.country,
     required this.sunrise,
     required this.sunset,
-  });
+  }); 
 
   factory System.fromJson(Map<String, dynamic> json) {
     return System(
-      type: json['type'],
-      id: json['id'],
-      country: json['country'],
-      sunrise: json['sunrise'],
-      sunset: json['sunset'],
+      type: json['type'] ?? 0,
+      id: json['id'] ?? 0,
+      country: json['country'] ?? '',
+      sunrise: json['sunrise'] ?? 0,
+      sunset: json['sunset'] ?? 0,
     );
   }
 

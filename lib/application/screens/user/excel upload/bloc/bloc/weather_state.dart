@@ -15,3 +15,4 @@ final class WeatherSuccessState extends WeatherState {
 
 final class WeatherErrorState extends WeatherState {}
 
+

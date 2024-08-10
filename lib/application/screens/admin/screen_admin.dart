@@ -80,8 +80,9 @@ class ScreenAdmin extends StatelessWidget {
         if (formKey.currentState!.validate()) {
            await AdminService().addLocationData(country: _countryController.text, state: _stateController.text, district: _districtController.text, city: _cityController.text).then((v){
           if (v) {
-            kSnakBar(context,v? 'Added':'Fail to add',v? kClrGreen:kClrRed);
+             formKey.currentState!.reset();
           }
+          kSnakBar(context,v? 'Added':'Fail to add',v? kClrGreen:kClrRed);
          });
         }
         },

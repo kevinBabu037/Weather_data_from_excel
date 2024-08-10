@@ -33,7 +33,7 @@ class ScreenHome extends StatelessWidget {
       body: BlocBuilder<LocationBloc, LocationState>(
         builder: (context, state) {
           if (state is LocationLoadingState) {
-            return const Center(child: CircularProgressIndicator());
+            return kCircularProgressIndicator;
           } else if (state is LocationSuccessStae) {
             return LocationTileWidget(locations: state.locations,);
           } else if (state is LocationEmptyState) {

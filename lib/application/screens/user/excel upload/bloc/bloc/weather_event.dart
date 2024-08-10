@@ -8,3 +8,6 @@ class FechWeatherEvent extends WeatherEvent{
 
   FechWeatherEvent({required this.city});
 }
+
+
+

@@ -7,20 +7,23 @@ part 'weather_event.dart';
 part 'weather_state.dart';
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
+
   WeatherBloc() : super(WeatherInitial()) {
-   
-   WeatherService service = WeatherService();
 
-    on<FechWeatherEvent>((event, emit)async {
-       emit(WeatherLoadingState());
+      final WeatherService weatherService = WeatherService();
 
-       WeatherResponse? weatherResponse = await service.getWeather(event.city);
+    on<FechWeatherEvent>((event, emit) async {
+      emit(WeatherLoadingState());
 
-      if (weatherResponse!=null) {
+      WeatherResponse? weatherResponse = await weatherService.getWeather(event.city);
+
+      if (weatherResponse != null) {
         emit(WeatherSuccessState(weatherResponse: weatherResponse));
-      }else if(weatherResponse==null) {
-          emit(WeatherErrorState());
-      } 
+      } else {
+        emit(WeatherErrorState());
+      }
     });
+
+    
   }
 }
